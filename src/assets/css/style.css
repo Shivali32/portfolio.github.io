@@ -1,0 +1,58 @@
+.experience-card {
+    padding: 3rem; 
+  }
+  
+  .experience-card ul,
+  .project-card ul {
+    font-size: 0.875rem; 
+    line-height: 1.2; 
+    padding-left: 20px;
+  }
+  
+  .experience-card li,
+  .project-card li {
+    text-align: justify;
+    position: relative;
+    padding-left: 15px;
+    margin-bottom: 0.25rem; 
+  }
+  
+  /* .project-card li:before , */
+  .experience-card li:before
+  {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #41464b;
+  }
+
+  .msg {
+    /* font-size: 1rem;  */
+    /* line-height: 1.2;  */
+    /* padding-left: 20px; */
+    text-align: justify;
+  } 
+
+  .get-in-touch {
+    /* font-size: 1rem;  */
+    /* line-height: 1.2;  */
+    /* padding: 0 15rem 0 15rem; */
+  }
+
+
+  /* Add pop-out animation effect to buttons */
+.skill-button {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .skill-button:hover {
+    transform: scale(1.1);  /* Make the button slightly larger */
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2); /* Add shadow to simulate popping */
+  }
+  
+  /* Optional: Add additional hover styles for visual appeal */
+  .skill-button:active {
+    transform: scale(1); /* Reset scaling when clicked */
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1); /* Softer shadow on active */
+  }
+  
