@@ -1,7 +1,7 @@
 {
   "name": "developers-portfolio",
   "description": "A portfolio for Shivali Mate.",
-  "homepage": "https://shivali32.github.io/shivali32.github.io/",
+  "homepage": "https://shivali32.github.io/portfolio.github.io/",
   "version": "2.0.0",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -21,9 +21,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "start": "react-scripts start",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -53,5 +53,16 @@
   },
   "devDependencies": {
     "gh-pages": "^6.3.0"
+  },
+  "main": "pages.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shivali32/portfolio.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shivali32/portfolio.github.io/issues"
   }
 }
