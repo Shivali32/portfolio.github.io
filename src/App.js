@@ -69,8 +69,8 @@ const App = () => {
   const titleRef = React.useRef();
 
   return (
-    // <BrowserRouter basename={process.env.PUBLIC_URL + "/"}>
-    <BrowserRouter basename="/">
+    <BrowserRouter basename={process.env.PUBLIC_URL + "/"}>
+    {/* <BrowserRouter basename="/"> */}
       {navBar.show && <Navbar ref={titleRef} />}
       <Routes>
         <Route path="/" element={<Navigate to="/home/" replace />} />

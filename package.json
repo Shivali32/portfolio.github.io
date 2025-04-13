@@ -1,7 +1,7 @@
 {
   "name": "developers-portfolio",
   "description": "A portfolio for Shivali Mate.",
-  "homepage": "https://shivali32.github.io/portfolio.github.io/home",
+  "homepage": "https://shivali32.github.io/portfolio.github.io/",
   "version": "2.0.0",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
