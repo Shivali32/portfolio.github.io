@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import {
   navBar,
   mainBody,
@@ -69,8 +70,9 @@ const App = () => {
   const titleRef = React.useRef();
 
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL + "/"}>
+    <HashRouter>
     {/* <BrowserRouter basename="/"> */}
+    {/* <BrowserRouter basename={process.env.PUBLIC_URL + "/"}> */}
       {navBar.show && <Navbar ref={titleRef} />}
       <Routes>
         <Route path="/" element={<Navigate to="/home/" replace />} />
@@ -89,7 +91,8 @@ const App = () => {
           />
         )}
       </Footer>
-    </BrowserRouter>
+    {/* </BrowserRouter> */}
+    </HashRouter>
   );
 };
 
