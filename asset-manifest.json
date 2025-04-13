@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/portfolio.github.io/static/css/main.71cf82a9.css",
-    "main.js": "/portfolio.github.io/static/js/main.22b3b692.js",
-    "static/js/453.9b1a9f3d.chunk.js": "/portfolio.github.io/static/js/453.9b1a9f3d.chunk.js",
-    "static/media/shivali.png": "/portfolio.github.io/static/media/shivali.3bd05c5a9eeb7baad0ef.png",
-    "static/media/back2.jpg": "/portfolio.github.io/static/media/back2.ecc43ce04887df4f3a5f.jpg",
-    "index.html": "/portfolio.github.io/index.html",
-    "main.71cf82a9.css.map": "/portfolio.github.io/static/css/main.71cf82a9.css.map",
-    "main.22b3b692.js.map": "/portfolio.github.io/static/js/main.22b3b692.js.map",
-    "453.9b1a9f3d.chunk.js.map": "/portfolio.github.io/static/js/453.9b1a9f3d.chunk.js.map"
+    "main.css": "/portfolio.github.io/home/static/css/main.71cf82a9.css",
+    "main.js": "/portfolio.github.io/home/static/js/main.a32ea4fc.js",
+    "static/js/453.9b1a9f3d.chunk.js": "/portfolio.github.io/home/static/js/453.9b1a9f3d.chunk.js",
+    "static/media/shivali.png": "/portfolio.github.io/home/static/media/shivali.3bd05c5a9eeb7baad0ef.png",
+    "static/media/back2.jpg": "/portfolio.github.io/home/static/media/back2.ecc43ce04887df4f3a5f.jpg",
+    "index.html": "/portfolio.github.io/home/index.html",
+    "main.71cf82a9.css.map": "/portfolio.github.io/home/static/css/main.71cf82a9.css.map",
+    "main.a32ea4fc.js.map": "/portfolio.github.io/home/static/js/main.a32ea4fc.js.map",
+    "453.9b1a9f3d.chunk.js.map": "/portfolio.github.io/home/static/js/453.9b1a9f3d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.71cf82a9.css",
-    "static/js/main.22b3b692.js"
+    "static/js/main.a32ea4fc.js"
   ]
 }
