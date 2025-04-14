@@ -33,15 +33,27 @@ const projects = [
         ],
   },
   // Add more projects as needed
+//   Merit Analyzer
+// April 2022 - March 2022
+// Prototyped and executed a Django and React web application on AWS EC2 in a time-sensitive hackathon, enabling efficient data analysis and visualization with plotly.js and achieving first prize in the competition.
+
+// React
+// Django
+// AWS EC2
+// plotly.js
+// Material-UI
+// Tailwind
+
+
 ];
 
-const publication = {
-  title: "Sign Language Recognition using Hand Gestures",
-  journal: "International Journal of Scientific Research in Computer Science, Engineering and Information Technology (IJSRCSEIT)",
-//   description: null,
-  url: "https://ijsrcseit.com/CSEIT228234",
-  dated: "March-April 2022",
-};
+    const publication = {
+    title: "Sign Language Recognition using Hand Gestures",
+    journal: "International Journal of Scientific Research in Computer Science, Engineering and Information Technology (IJSRCSEIT)",
+    //   description: null,
+    url: "https://ijsrcseit.com/CSEIT228234",
+    dated: "March-April 2022",
+    };
 
 const dummyProject = {
   title: null,
@@ -97,11 +109,11 @@ const Project = ({ heading, length }) => {
                         className="mb-4 d-flex justify-content-between align-items-center"
                         >
                         <span><a className="text-decoration-none text-light" href={publication.url} >{publication.title}</a></span>
-                        <span className="text-muted">{publication.dated}</span>
+                        <span className="text-info">{publication.dated}</span>
                         </Card.Title>
 
                         <div className="d-flex justify-content-between mb-3">
-                        <Card.Text className="text-info mb-0">{publication.journal}</Card.Text>
+                        <Card.Text className="text-muted mb-0">{publication.journal}</Card.Text>
                         </div>
                     </Card.Body>
                     </Card>
