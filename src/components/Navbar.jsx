@@ -6,6 +6,16 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { mainBody, repos, about, skills, experiences, getInTouch } from "../editable-stuff/config.js";
 import { NavLink } from "./home/migration";
+import { useNavigate } from "react-router-dom";
+
+export const scrollToSection = (id) => {
+    setTimeout(() => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100); // Wait a little for the DOM to update after routing
+  };
 
 const Navigation = React.forwardRef((props, ref) => {
   // const { showBlog, FirstName } = config;
@@ -32,6 +42,7 @@ const Navigation = React.forwardRef((props, ref) => {
 //       : setIsTop(true);
 //   }, [navBottom, navbarDimensions, ref, scrollPosition]);
 
+    const navigate = useNavigate();
   return (
     <Navbar
       ref={navbarMenuRef}
@@ -56,7 +67,10 @@ const Navigation = React.forwardRef((props, ref) => {
             <NavLink
               className="nav-item lead"
               //   href={process.env.PUBLIC_URL + "/#aboutme"}
-              href="#aboutme"
+              onClick={() => {
+                navigate("/home/");
+                scrollToSection("aboutme");
+              }}              
             >
               About
             </NavLink>
@@ -65,7 +79,10 @@ const Navigation = React.forwardRef((props, ref) => {
             <NavLink
               className="nav-item lead"
               //   href={process.env.PUBLIC_URL + "/#experiences"}
-              href="#experiences"
+              onClick={() => {
+                navigate("/home/");
+                scrollToSection("experiences");
+              }}
             >
               Experiences
             </NavLink>
@@ -74,7 +91,10 @@ const Navigation = React.forwardRef((props, ref) => {
 
             <NavLink
             //   href={process.env.PUBLIC_URL + "/#projects"}
-              href="#projects"
+            onClick={() => {
+                navigate("/home/");
+                scrollToSection("projects");
+              }}
             >
               Projects
             </NavLink>
@@ -91,7 +111,10 @@ const Navigation = React.forwardRef((props, ref) => {
             <NavLink
               className="nav-item lead"
               //   href={process.env.PUBLIC_URL + "/#skills"}
-              href="#skills"
+              onClick={() => {
+                navigate("/home/");
+                scrollToSection("skills");
+              }}
             >
               Skills
             </NavLink>
@@ -100,7 +123,10 @@ const Navigation = React.forwardRef((props, ref) => {
             <NavLink
               className="nav-item lead"
               //   href={process.env.PUBLIC_URL + "/#contactme"}
-              href="#contactme"
+              href="#contactme"  onClick={() => {
+                navigate("/home/");
+                scrollToSection("contactme");
+              }}
             >
               Contact Me
             </NavLink>

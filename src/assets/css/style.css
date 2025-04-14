@@ -11,7 +11,7 @@
   
   .experience-card li,
   .project-card li {
-    text-align: justify;
+    text-align: left;
     position: relative;
     padding-left: 15px;
     margin-bottom: 0.25rem; 

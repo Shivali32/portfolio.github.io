@@ -107,7 +107,7 @@ const experiences = {
         company: "OrganizeIn",
         role: 'Intern Developer',
         companylogo: require('../assets/img/organizein.jpg'),
-        date: 'July 2022 – June 2024',
+        date: 'April 2021 – Sept 2021',
         msg: [
             // ["Contributed to two projects: a KPI Dashboard and a Doctor Consultation App prototype, delivering functional solutions for data visualization and healthcare access."],
             // ["Developed the KPI Dashboard from scratch, integrating APIs and performing Extract, Transform, Load (ETL) processes to process Google Analytics data."],
@@ -123,7 +123,7 @@ const experiences = {
         company: "Edify Acceletarors",
         role: 'Development Intern',
         companylogo: require('../assets/img/edify.jpg'),
-        date: 'May 2017 – May 2018',
+        date: 'May 2020 – July 2020',
         msg: [
             ["Designed and implemented the backend and frontend of a blood donation website for Bloom India, delivering a fully functional web platform."],
             ["Built multiple pages, including homepage, events, offers, about us, partner, and pledge sections, enhancing user engagement and navigation."],
