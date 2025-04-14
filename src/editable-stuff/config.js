@@ -149,7 +149,7 @@ const education = {
         institution: "Savitribai Phule Pune University",
         duration: "2018 - 2022",
         gpa: "3.75/4.0",
-        subjects: ["Object Oriented Programming, Database Management Systems, Computer Networks, Theory of Computation, Data Structures & Algorithms, High Performance Computing, Software Engineering, Cloud Computing, Information & Cyber Security"],
+        subjects: ["Object Oriented Programming, Database Management Systems, Data Structures & Algorithms, High Performance Computing"],
       },
     ],
 };

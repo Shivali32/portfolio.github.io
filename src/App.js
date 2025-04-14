@@ -1,6 +1,7 @@
 import React from "react";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import { HashRouter } from "react-router-dom";
+// import { BrowserRouter } from "react-router-dom";
 import {
   navBar,
   mainBody,
@@ -18,12 +19,30 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Skills from "./components/home/Skills";
 import GetInTouch from "./components/home/GetInTouch.jsx";
-
 import Experience from "./components/home/Experience";
 
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
 const Home = React.forwardRef((props, ref) => {
+    const location = useLocation();
+
+    useEffect(() => {
+      const hash = location.hash; // like "#/home/#aboutme"
+      const match = hash.match(/#([^#]+)$/); // captures the final part like "aboutme"
+      if (match && match[1]) {
+        const el = document.getElementById(match[1]);
+        if (el) {
+          setTimeout(() => {
+            el.scrollIntoView({ behavior: "smooth" });
+          }, 100); // wait for render
+        }
+      }
+    }, [location]);
+
   return (
     <>
+    <section id="home">
       <MainBody
         gradient={mainBody.gradientColors}
         title={`${mainBody.firstName} ${mainBody.middleName} ${mainBody.lastName}`}
@@ -31,7 +50,10 @@ const Home = React.forwardRef((props, ref) => {
         icons={mainBody.icons}
         ref={ref}
       />
+      </section>
+
       {about.show && (
+        <section id="aboutme">
         <AboutMe
           heading={about.heading}
           message1={about.message1}
@@ -41,25 +63,32 @@ const Home = React.forwardRef((props, ref) => {
           resume={about.resume}
           education={education}
         />
+        </section>
       )}
       {
         experiences.show && (
+            <section id="experiences">
           <Experience experiences={experiences} id="experiences" />
+          </section>
         )
       }
       {repos.show && (
+        <section id="projects">
         <Project
           heading={repos.heading}
           username={repos.gitHubUsername}
           length={repos.reposLength}
           specfic={repos.specificRepos}
         />
+        </section>
       )}
       {skills.show && (
+        <section id="skills">
         <Skills
           heading={skills.heading}
           data={skills.data}
         />
+        </section>
       )}
       
     </>

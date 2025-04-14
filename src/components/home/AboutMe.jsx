@@ -46,7 +46,7 @@ const AboutMe = ({ heading, message1, message2, link, imgSize, resume }) => {
         institution: "Savitribai Phule Pune University",
         duration: "2018 - 2022",
         gpa: "3.75/4.0",
-        subjects: ["Object Oriented Programming, Database Management Systems, Computer Networks, Theory of Computation, Data Structures & Algorithms, High Performance Computing, Software Engineering, Cloud Computing"],
+        subjects: ["Object Oriented Programming, Database Management Systems, Data Structures & Algorithms, High Performance Computing"],
       },
     ];
 

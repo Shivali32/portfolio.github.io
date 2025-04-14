@@ -6,16 +6,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { mainBody, repos, about, skills, experiences, getInTouch } from "../editable-stuff/config.js";
 import { NavLink } from "./home/migration";
-import { useNavigate } from "react-router-dom";
 
-export const scrollToSection = (id) => {
-    setTimeout(() => {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 100); // Wait a little for the DOM to update after routing
-  };
 
 const Navigation = React.forwardRef((props, ref) => {
   // const { showBlog, FirstName } = config;
@@ -42,7 +33,6 @@ const Navigation = React.forwardRef((props, ref) => {
 //       : setIsTop(true);
 //   }, [navBottom, navbarDimensions, ref, scrollPosition]);
 
-    const navigate = useNavigate();
   return (
     <Navbar
       ref={navbarMenuRef}
@@ -51,8 +41,8 @@ const Navigation = React.forwardRef((props, ref) => {
     //     }`}
       expand="lg"
     >
-      {/* <Navbar.Brand className="navbar-brand" href={process.env.PUBLIC_URL + "/#home"}> */}
-      <Navbar.Brand className="navbar-brand" href="#home">
+      <Navbar.Brand className="navbar-brand" href={process.env.PUBLIC_URL + "/#/home/#home"}>
+      {/* <Navbar.Brand className="navbar-brand" href="/#/home/#home"> */}
         {`<${mainBody.firstName} />`}
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" className="toggler" />
@@ -66,11 +56,8 @@ const Navigation = React.forwardRef((props, ref) => {
           {about.show && (
             <NavLink
               className="nav-item lead"
-              //   href={process.env.PUBLIC_URL + "/#aboutme"}
-              onClick={() => {
-                navigate("/home/");
-                scrollToSection("aboutme");
-              }}              
+                href={process.env.PUBLIC_URL + "/#/home/#aboutme"}
+            //   href="/#/home/#aboutme"
             >
               About
             </NavLink>
@@ -78,11 +65,8 @@ const Navigation = React.forwardRef((props, ref) => {
           {experiences.show && (
             <NavLink
               className="nav-item lead"
-              //   href={process.env.PUBLIC_URL + "/#experiences"}
-              onClick={() => {
-                navigate("/home/");
-                scrollToSection("experiences");
-              }}
+                href={process.env.PUBLIC_URL + "/#/home/#experiences"}
+            //   href="/#/home/#experiences"
             >
               Experiences
             </NavLink>
@@ -90,11 +74,8 @@ const Navigation = React.forwardRef((props, ref) => {
           {repos.show && (
 
             <NavLink
-            //   href={process.env.PUBLIC_URL + "/#projects"}
-            onClick={() => {
-                navigate("/home/");
-                scrollToSection("projects");
-              }}
+              href={process.env.PUBLIC_URL + "/#/home/#projects"}
+            //   href="/#/home/#projects"
             >
               Projects
             </NavLink>
@@ -110,11 +91,8 @@ const Navigation = React.forwardRef((props, ref) => {
           {skills.show && (
             <NavLink
               className="nav-item lead"
-              //   href={process.env.PUBLIC_URL + "/#skills"}
-              onClick={() => {
-                navigate("/home/");
-                scrollToSection("skills");
-              }}
+                href={process.env.PUBLIC_URL + "/#/home/#skills"}
+            //   href="/#/home/#skills"
             >
               Skills
             </NavLink>
@@ -122,11 +100,8 @@ const Navigation = React.forwardRef((props, ref) => {
           {getInTouch.show && (
             <NavLink
               className="nav-item lead"
-              //   href={process.env.PUBLIC_URL + "/#contactme"}
-              href="#contactme"  onClick={() => {
-                navigate("/home/");
-                scrollToSection("contactme");
-              }}
+                href={process.env.PUBLIC_URL + "/#/home/#contactme"}
+            //   href="/#/home/#contactme"
             >
               Contact Me
             </NavLink>
