@@ -40,8 +40,9 @@ const projects = [
     rating: 4.0,
     description: [
         "Built and deployed a full-stack web application using Django and React, enabling interactive data analysis and visualization for students and teachers.",
-        "Integrated Plotly.js to display individual student progress and overall class performance, with downloadable progress report certificates for each student.",        
-        "Deployed on AWS EC2 to ensure scalable, real-time access and smooth performance during high-traffic use.",    
+        "Integrated Plotly.js to display individual student progress and overall class performance, with downloadable progress report certificates for each student.",
+        "Deployed on AWS EC2 to ensure scalable, real-time access and smooth performance during high-traffic use.",
+        "Streamlined academic monitoring by transforming raw data into actionable insights for educators and learners.",
     ],
   },
   // Add more projects as needed
