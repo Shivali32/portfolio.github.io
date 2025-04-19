@@ -32,6 +32,18 @@ const projects = [
         "Created the project using the Python Kivy framework, enabling the development of applications compatible with two platforms, namely Desktop and Android.",
         ],
   },
+  {
+    title: "Merit Analyzer",
+    projectUrl: "https://anotherproject.com",
+    technologies: ["Django", "React", "AWS EC2", "Plotly.js", "HTML/CSS"], 
+    lastUpdated: "2025-03-25T14:00:00Z",
+    rating: 4.0,
+    description: [
+        "Built and deployed a full-stack web application using Django and React, enabling interactive data analysis and visualization for students and teachers.",
+        "Integrated Plotly.js to display individual student progress and overall class performance, with downloadable progress report certificates for each student.",        
+        "Deployed on AWS EC2 to ensure scalable, real-time access and smooth performance during high-traffic use.",    
+    ],
+  },
   // Add more projects as needed
 //   Merit Analyzer
 // April 2022 - March 2022
