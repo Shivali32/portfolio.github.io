@@ -35,7 +35,7 @@ const projects = [
   {
     title: "Merit Analyzer",
     projectUrl: "https://anotherproject.com",
-    technologies: ["Django", "React", "AWS EC2", "Plotly.js", "HTML/CSS"], 
+    technologies: ["Django", "React", "AWS EC2", "AWS S3", "Plotly.js", "HTML/CSS"], 
     lastUpdated: "2025-03-25T14:00:00Z",
     rating: 4.0,
     description: [
