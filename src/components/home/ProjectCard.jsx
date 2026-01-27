@@ -13,35 +13,61 @@ const ProjectCard = ({ project }) => {
     // rating
   } = project;  
 
+  const cardContent = (
+    <Card.Body className="d-flex flex-column">
+      <Card.Title as="h5" className="existing-class mb-4 flex-grow-1">{title || <Skeleton />} </Card.Title>
+
+      {description && Array.isArray(description) && description.length > 0 && (
+        <ul className="flex-grow-1 mb-2">
+          {description.map((item, index) => (
+            <li key={index}>{Array.isArray(item) ? item[0] : item}</li> 
+          ))}
+        </ul>
+      )}
+
+      <hr className="mt-auto"/>
+      {technologies ? (
+        <Technologies techList={technologies} projectUrl={projectUrl} />
+      ) : (
+        <Skeleton count={3} />
+      )}
+    </Card.Body>
+  );
+
   return (
-    <Col lg={4} md={6} className="d-flex   ">
-      <Card className="card shadow-lg p-3 mb-5 rounded project-card" style={{ backgroundColor: "#00000055" }}>
-        <Card.Body className="d-flex flex-column">
-            <Card.Title as="h5" className="existing-class mb-4 flex-grow-1">{title || <Skeleton />} </Card.Title>
-            {/* <Card.Text>{description || <Skeleton count={3} />} </Card.Text> */}
-
-            {description && Array.isArray(description) && description.length > 0 && (
-            <ul className="flex-grow-1 mb-2">
-                {description.map((item, index) => (
-                <li key={index}>{Array.isArray(item) ? item[0] : item}</li> 
-                ))}
-            </ul>
-            )}
-
-          {/* {projectUrl ? <CardButtons projectUrl={projectUrl} /> : <Skeleton count={2} />} */}
-          <hr className="mt-auto"/>
-          {technologies ? (
-            <Technologies techList={technologies} projectUrl={projectUrl} />
-          ) : (
-            <Skeleton count={3} />
-          )}
-          {/* {(lastUpdated || rating) ? (
-            <CardFooter rating={rating} lastUpdated={lastUpdated} />
-          ) : (
-            <Skeleton />
-          )} */}
-        </Card.Body>
-      </Card>
+    <Col lg={6} md={12} className="d-flex">
+      {projectUrl ? (
+        <a
+          href={projectUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-decoration-none w-100"
+          style={{ color: 'inherit' }}
+        >
+          <Card 
+            className="card shadow-lg p-3 mb-5 rounded project-card" 
+            style={{ 
+              backgroundColor: "#00000055",
+              cursor: 'pointer',
+              transition: 'transform 0.2s, box-shadow 0.2s'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-5px)';
+              e.currentTarget.style.boxShadow = '0 10px 20px rgba(0,0,0,0.3)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 5px 15px rgba(0,0,0,0.2)';
+            }}
+          >
+            {cardContent}
+          </Card>
+        </a>
+      ) : (
+        <Card className="card shadow-lg p-3 mb-5 rounded project-card" style={{ backgroundColor: "#00000055" }}>
+          {cardContent}
+        </Card>
+      )}
     </Col>
   );
 };

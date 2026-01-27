@@ -11,13 +11,17 @@ const mainBody = {
   lastName: "Mate",
   message: [" Software Developer"," Computer Engineer", "Student"],
   icons: [
-    // {
-    //   image: "fa-github",
-    //   url: "https://github.com/Shivali32",
-    // },
     {
-      image: "fa-linkedin",
-      url: "https://www.linkedin.com/in/shivali-m/",
+        image: "fa-linkedin",
+        url: "https://www.linkedin.com/in/shivali-m/",
+    },
+    {
+        image: "fa-github",
+        url: "https://github.com/Shivali32",
+    },
+    {
+        image: "fa-envelope",
+        url: "mailto:shivali7080@gmail.com",
     },
   ],
 };
@@ -31,7 +35,7 @@ const about = {
   message1:
   "As a Master’s student in Computer Science at Indiana University with a Bachelor’s degree in Computer Engineering, I am passionate about pursuing a career as a Software Engineer. My professional experience as a Software Developer at Capgemini has equipped me with expertise in designing and building scalable data platforms while leading teams to deliver high-quality projects under tight deadlines. I possess strong technical skills in Python, Django, AWS, and Machine Learning, and I thrive on developing innovative solutions that create meaningful impact.",
   message2:
-  "In addition to my technical background, I bring a diverse set of interests and achievements. I hold a Visharad certification in Bharatanatyam—the sixth level of this classical Indian dance form—from ABG University. My leadership abilities extend beyond academics; I captained my college volleyball team for three years, securing gold and silver medals in inter-college and state-level tournaments. Furthermore, I have honed organizational and leadership skills as a Student Coordinator for cultural and technical events, including managing ‘Ensemble,’ a major college fest. Combining my technical expertise with my creative drive, I am eager to contribute to impactful projects that blend innovation and precision while making a difference."
+  "In addition to my technical background, I bring a diverse set of interests and achievements. I hold a Visharad certification in Bharatanatyam, the sixth level of this classical Indian dance form, from ABG University. My leadership abilities extend beyond academics; I captained my college volleyball team for three years, securing gold and silver medals in inter-college and state-level tournaments. Furthermore, I have honed organizational and leadership skills as a Student Coordinator for cultural and technical events, including managing ‘Ensemble,’ a major college fest. Combining my technical expertise with my creative drive, I am eager to contribute to impactful projects that blend innovation and precision while making a difference."
     // "Master’s student in Computer Science at Indiana University with a Bachelor’s in Computer Engineering. Experienced Software Developer from Capgemini, where I built scalable data platforms and led teams to successfully deliver high-quality projects on time. Skilled in Python, Django, AWS, and Machine Learning, with a passion for innovative solutions.",
 //   resume: "https://docs.google.com/document/d/13_PWdhThMr6roxb-UFiJj4YAFOj8e_bv3Vx9UHQdyBQ/edit?usp=sharing",
 };
@@ -45,7 +49,7 @@ const repos = {
   show: true,
   heading: "Projects",
   gitHubUsername: "Shivali32",
-  reposLength: 4,
+//   reposLength: 4,
   specificRepos: [],
 };
 
@@ -80,7 +84,7 @@ const getInTouch = {
     show: true,
     heading: "Get In Touch",
     message1:
-        "Seeking Software Development Intern roles! Know any openings or want to connect? Please do mail me at",
+        "Seeking Software Developer or Software Engineer roles! Know any openings or want to connect? Please do",
     message2:   "or DM me on",
     email: "shivali7080@gmail.com",
     linkedin: "https://www.linkedin.com/in/shivali-m/"

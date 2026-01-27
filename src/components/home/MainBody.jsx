@@ -1,5 +1,7 @@
 // import React from "react";
 import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 // import Typist from 'react-typist-component';
 import { Jumbotron } from "./migration";
 // import bgImage from "../../assets/img/main_back.png"; // Import your image
@@ -44,7 +46,7 @@ const Typist = ({ text = [], speed = 100, deleteSpeed = 50, pauseDuration = 1000
 
 
 const MainBody = React.forwardRef(
-  ({ gradient, title, message, icons }, ref) => {
+  ({ gradient, title, message, icons, imageLink, message1 }, ref) => {
     return (
       <Jumbotron
         fluid
@@ -82,36 +84,68 @@ const MainBody = React.forwardRef(
       ></div>
 
         {/* <div id="stars"></div> */}
-        <Container className="text-center">
-          <h1 ref={ref} className="display-1">
-            {title}
-          </h1>
-            <div className="lead typist">
+        <Container>
+          <Row className="align-items-center">
+            {/* Image on the left */}
+            {imageLink && (
+              <Col md={5} className="text-center mb-4 mb-md-0">
+                <img
+                  src={imageLink}
+                  alt="profile"
+                  className="border border-secondary rounded-circle"
+                  style={{
+                    width: "400px",
+                    height: "400px",
+                    objectFit: "cover",
+                    maxWidth: "100%"
+                  }}
+                />
+              </Col>
+            )}
+            
+            {/* Name, message, and message1 on the right */}
+            <Col md={imageLink ? 7 : 12} className={imageLink ? "text-left" : "text-center"}>
+              <h1 ref={ref} className="display-1">
+                {title}
+              </h1>
+              <div className="lead typist">
                 <Typist text={message} speed={100} deleteSpeed={50} pauseDuration={1000}>
-                {/* {message} */}
-          </Typist>
-            </div>
-          <div className="p-5">
-            {icons.map((icon, index) => (
-              <a
-                key={`social-icon-${index}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                href={icon.url}
-                aria-label={`My ${icon.image.split("-")[1]}`}
+                  {/* {message} */}
+                </Typist>
+              </div>
+              {message1 && (
+                <p className="msg   lead mt-3" >
+                {/* <p className="lead mt-3" style={{ textAlign: "center" }}> */}
+                  {message1}
+                </p>
+              )}
+              <div className="p-5">
+                {icons.map((icon, index) => {
+                  // Use 'fas' for solid icons like envelope, 'fab' for brand icons
+                  const iconClass = icon.image === 'fa-envelope' ? 'fas' : 'fab';
+                  return (
+                    <a
+                      key={`social-icon-${index}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href={icon.url}
+                      aria-label={`My ${icon.image.split("-")[1]}`}
+                    >
+                      <i className={`${iconClass} ${icon.image}  fa-3x socialicons`} />
+                    </a>
+                  );
+                })}
+              </div>
+              {/* <a
+                className="btn btn-outline-light btn-lg "
+                href={process.env.PUBLIC_URL + "/#/home/#aboutme"}
+                role="button"
+                aria-label="Learn more about me"
               >
-                <i className={`fab ${icon.image}  fa-3x socialicons`} />
-              </a>
-            ))}
-          </div>
-          <a
-            className="btn btn-outline-light btn-lg "
-            href={process.env.PUBLIC_URL + "/#/home/#aboutme"}
-            role="button"
-            aria-label="Learn more about me"
-          >
-            More about me
-          </a>
+                More about me
+              </a> */}
+            </Col>
+          </Row>
         </Container>
       </Jumbotron>
     );

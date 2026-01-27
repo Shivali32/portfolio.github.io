@@ -9,7 +9,7 @@ import ProjectCard from "./ProjectCard";
 const projects = [
   {
     title: "Sign Language Recognition Using Hand Gestures",
-    projectUrl: "https://myproject.com",
+    projectUrl: "https://github.com/Shivali32/Sign-Language-Recognition",
     technologies: ["Python", "Javascript", "OpenCV", "TensorFlow", "NumPy", "Google MediaPipe", "Flask"],
     lastUpdated: "2025-03-30T10:00:00Z",
     rating: 4.5,
@@ -21,8 +21,43 @@ const projects = [
     ],
   },
   {
+    title: "ShieldScraper: Automated Soccer League Stats Pipeline",
+    projectUrl: "https://github.com/Shivali32/shieldscraper",
+    technologies: ["Python", "AWS ECR", "AWS Glue Crawler"," AWS SNS", "AWS CLI", "JSONL", "Linux"],
+    lastUpdated: "2025-03-30T10:00:00Z",
+    rating: 4.5,
+    description: [
+        ["ShieldScraper is an automated, secure, and scalable cloud-based data engineering pipeline designed for advanced web scraping, data transformation, storage, and visualization."],
+        ["Implemented using a robust suite of Amazon Web Services (AWS), ShieldScraper integrates ECS Fargate for container orchestration, Glue for Extract-Transform-Load (ETL) processes, DynamoDB for scalable data storage, Athena for querying capabilities, and QuickSight for intuitive data visualization."],
+        ["The pipeline employs real-time monitoring and automated alerting, ensuring system robustness, fault tolerance, and operational efficiency."],
+
+    ],
+  },
+  {
+    title: "GPT Custom Implementation",
+    projectUrl: "https://github.com/Shivali32/GPT_custom_implementation",
+    technologies: ["Python", "PyTorch", "Hugging Face Transformers", "CUDA", "GPU Acceleration", "Mixed Precision", "Tensor Cores", "Flash Attention"],
+    lastUpdated: null,
+    rating: null,
+    description: [           
+        ["Created the GPT-2 architecture from scratch using nn.Module, integrating Hugging Face checkpoints, parameter sharing, custom data loaders, and optimization loops for model training and evaluation."],            
+        ["Optimized training with GPU acceleration, mixed precision (float16, TF32), Tensor Cores, flash attention, and distributed data parallel (DDP), reducing training time while maintaining model performance."]
+    ],
+  },
+  {
+    title: "Data Viz Analytics Dashboard",
+    projectUrl: "https://github.com/Shivali32/Data_Viz_App",
+    technologies: ["Python", "Flask", "Angular", "R", "rpy2", "Matplotlib", "Seaborn", "Plotly", "Bokeh", "Altair", "ggplot2", "REST APIs"],
+    lastUpdated: null,
+    rating: null,
+    description: [
+        ["Built a web application that executes Python and R visualization code and renders static, interactive, and 3D plots directly in the browser using a Flask–Angular architecture."],
+        ["Designed separate execution pipelines for Python and R, handling plot generation, file management, and frontend rendering while addressing caching and state consistency issues."]
+    ],
+  },
+  {
     title: "Revision Assistant Bot",
-    projectUrl: "https://anotherproject.com",
+    projectUrl: "https://github.com/Shivali32/RevisionBot",
     technologies: ["Python", "Scikit-learn","Natural Language Toolkit", "Kivy" ,"HTML/CSS"], 
     lastUpdated: "2025-03-25T14:00:00Z",
     rating: 4.0,
@@ -34,15 +69,14 @@ const projects = [
   },
   {
     title: "Merit Analyzer",
-    projectUrl: "https://anotherproject.com",
+    projectUrl: "https://github.com/Shivali32/Merit-Analyser",
     technologies: ["Django", "React", "AWS EC2", "AWS S3", "Plotly.js", "HTML/CSS"], 
     lastUpdated: "2025-03-25T14:00:00Z",
     rating: 4.0,
     description: [
         "Built and deployed a full-stack web application using Django and React, enabling interactive data analysis and visualization for students and teachers.",
         "Integrated Plotly.js to display individual student progress and overall class performance, with downloadable progress report certificates for each student.",
-        "Deployed on AWS EC2 to ensure scalable, real-time access and smooth performance during high-traffic use.",
-        "Streamlined academic monitoring by transforming raw data into actionable insights for educators and learners.",
+        "Deployed on AWS EC2 to ensure scalable, real-time access and smooth performance, while transforming raw academic data into actionable insights for educators and learners.",
     ],
   },
   // Add more projects as needed
