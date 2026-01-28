@@ -1,8 +1,4 @@
 import React from "react";
-import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/Tabs";
-import SkillsTab from "./SkillsTab";
-// import Row from "react-bootstrap/Row";
 import { Jumbotron } from "./migration";
 import { Container } from "react-bootstrap";
 import { useScrollPosition } from "../../hooks/useScrollPosition";
@@ -18,6 +14,29 @@ const certifications = [
         issuer: "University of Minnesota",
     },
 
+];
+
+const skillsCategories = [
+    {
+        title: "Languages",
+        skills: ["Python", "Java", "C/C++", "SQL", "PHP", "Golang", "JavaScript"]
+    },
+    {
+        title: "AI/ML & Data",
+        skills: ["TensorFlow", "Keras", "OpenCV", "Mediapipe", "Pandas", "NumPy", "PyTorch", "Scikit-learn (sklearn)"]
+    },
+    {
+        title: "Web Development",
+        skills: ["Django", "Flask", "ReactJS", "AngularJS", "CodeIgniter"]
+    },
+    {
+        title: "Databases",
+        skills: ["PostgreSQL", "MySQL", "Oracle", "DBeaver", "MongoDb"]
+    },
+    {
+        title: "Tools",
+        skills: ["Git/GitHub", "Jira", "Postman", "Tableau", "PowerBI", "QlikSense", "Kubernetes", "Docker"]
+    }
 ];
 
 const Skills = React.forwardRef(({ heading, data}, ref) => {
@@ -38,31 +57,32 @@ const Skills = React.forwardRef(({ heading, data}, ref) => {
         <h2 ref={skillsTabRef} className="display-4 pb-5 text-center text-light">
           {heading}
         </h2>
-        <Tabs
-          className="skills-tabs"
-          defaultActiveKey="hard-skills"
-          id="skills-tabs"
-          fill
-        >
-          <Tab
-            tabClassName="skills-tab lead"
-            eventKey="hard-skills"
-            // title="Technical Skills"
-          >
-            <Row className="pt-3 px-1 text-center">
-              <SkillsTab skills={data} isScrolled={isScrolled} />
-            </Row>
-          </Tab>
-          {/* <Tab
-            tabClassName="skills-tab lead"
-            eventKey="soft-skills"
-            title="Soft Skills"
-          >
-            <Row className="pt-3 px-1">
-              <SkillsTab skills={softSkills} isScrolled={isScrolled} />
-            </Row>
-          </Tab> */}
-        </Tabs>
+        <Row className="d-flex justify-content-center align-items-stretch">
+          {skillsCategories.map((category, index) => (
+            <Col xs={12} md={6} lg={4} key={index} className="mb-4 d-flex">
+              <Card
+                className="card shadow-lg p-1 rounded project-card flex-grow-1"
+                style={{ backgroundColor: "#00000055" }}
+              >
+                <Card.Body className="d-flex flex-column h-100">
+                  <Card.Title
+                    as="h5"
+                    className="mb-2 ms-3 d-flex justify-content-between align-items-center"
+                  >
+                    <span className="text-light">{category.title}</span>
+                  </Card.Title>
+                  <div className="flex-grow-1">
+                    {category.skills.map((skill, skillIndex) => (
+                      <span key={skillIndex} className="badge bg-dark text-light mx-1 mb-2">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
       </Container>
 
       <div className="container mt-5">
@@ -85,7 +105,7 @@ const Skills = React.forwardRef(({ heading, data}, ref) => {
                         </Card.Title>
 
                         <div className="d-flex justify-content-between mb-2">
-                        <Card.Text className="text-muted mb-0">{certifications.issuer}</Card.Text>
+                        <Card.Text className="text-info mb-0">{certifications.issuer}</Card.Text>
                         </div>
                     </Card.Body>
                     </Card>

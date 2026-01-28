@@ -48,23 +48,12 @@ const Home = React.forwardRef((props, ref) => {
         title={`${mainBody.firstName} ${mainBody.middleName} ${mainBody.lastName}`}
         message={mainBody.message}
         icons={mainBody.icons}
+        imageLink={about.imageLink}
+        message1={about.message1}
         ref={ref}
       />
       </section>
 
-      {about.show && (
-        <section id="aboutme">
-        <AboutMe
-          heading={about.heading}
-          message1={about.message1}
-          message2={about.message2}
-          link={about.imageLink}
-          imgSize={about.imageSize}
-          resume={about.resume}
-          education={education}
-        />
-        </section>
-      )}
       {
         experiences.show && (
             <section id="experiences">
@@ -90,6 +79,19 @@ const Home = React.forwardRef((props, ref) => {
         />
         </section>
       )}
+      {about.show && (
+        <section id="aboutme">
+        <AboutMe
+          heading={about.heading}
+          message1={about.message1}
+          message2={about.message2}
+          link={null}
+          imgSize={about.imageSize}
+          resume={about.resume}
+          education={education}
+        />
+        </section>
+      )}
       
     </>
   );
@@ -111,13 +113,15 @@ const App = () => {
       {false && <Route path="/blog/:id" component={BlogPost} />} */}
       <Footer>
         {getInTouch.show && (
-          <GetInTouch
-            heading={getInTouch.heading}
-            message1={getInTouch.message1}
-            message2={getInTouch.message2}
-            email={getInTouch.email}
-            linkedin={getInTouch.linkedin}
-          />
+          <section id="contactme">
+            <GetInTouch
+              heading={getInTouch.heading}
+              message1={getInTouch.message1}
+              message2={getInTouch.message2}
+              email={getInTouch.email}
+              linkedin={getInTouch.linkedin}
+            />
+          </section>
         )}
       </Footer>
     {/* </BrowserRouter> */}

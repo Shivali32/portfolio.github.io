@@ -77,15 +77,18 @@ const GetInTouch = ({ heading, message1, message2, email, linkedin }) => {
         return;
       }
 
+      // Match your EmailJS template variables: name, time, from_name, from_email, subject, message
       const templateParams = {
+        name: formData.name,
         from_name: formData.name,
         from_email: formData.email,
         subject: formData.subject,
         message: formData.message,
-        to_email: email, // Your email address
+        time: new Date().toLocaleString(),
       };
 
-      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      // Public key must be passed as an object (required by @emailjs/browser v4+)
+      await emailjs.send(serviceId, templateId, templateParams, { publicKey });
 
       setStatus({
         type: "success",
@@ -101,202 +104,218 @@ const GetInTouch = ({ heading, message1, message2, email, linkedin }) => {
       });
     } catch (error) {
       console.error("EmailJS error:", error);
+      // Show the actual error from EmailJS for debugging
+      const errorText = error?.text || error?.message || String(error);
       setStatus({
         type: "error",
-        message: "Failed to send message. Please try again or contact me directly at " + email,
+        message: errorText.includes("Failed to fetch") || error?.status === 0
+          ? "Network error. Please check your connection and try again, or contact me at " + email
+          : "Failed to send: " + (errorText || "Please try again or contact me at " + email),
       });
     } finally {
       setLoading(false);
     }
   };
 
+  const compactPadding = "0.4rem";
+  const compactBorderRadius = "5px";
+
   return (
     <>
       <Row className="d-flex justify-content-center align-items-stretch">
-        <Col md="9" className="mb-4 d-flex">
-          <section id="contactme" className="justify-content-center w-100">
-            <h2 className="display-4 pb-3 text-center text-white">{heading}</h2>
-            <p className="get-in-touch lead text-center pb-4 text-white">
-              {message1}{" "}
-              <a className="text-decoration-none text-info" href={`mailto:${email}`}>
-                mail me
-              </a>{" "}
-              {message2}{" "}
-              <a className="text-decoration-none text-info" href={linkedin}>
-                LinkedIn
-              </a>
-              .
-            </p>
+        <Col md={12} className="mb-4">
+          <section id="contactme" className="w-100">
+            <Row className="align-items-center">
+              <Col md={4} lg={4} className="pe-md-4 mb-4 mb-md-0 text-start">
+                <h2 className="display-4 pb-5 text-white" style={{ fontSize: "4rem" }}>{heading}</h2>
+                <p className="get-in-touch lead text-white mb-0" style={{ fontSize: "1rem", textAlign: "left" }}>
+                  {message1}{" "}
+                  <a className="text-decoration-none text-info" href={`mailto:${email}`}>
+                    mail me
+                  </a>{" "}
+                  {message2}{" "}
+                  <a className="text-decoration-none text-info" href={linkedin}>
+                    LinkedIn
+                  </a>
+                  , and I will send you my resume.
+                </p>
+              </Col>
 
-            <div
-              style={{
-                backgroundColor: "#1a1a1a",
-                borderRadius: "10px",
-                padding: "2rem",
-                maxWidth: "800px",
-                margin: "0 auto",
-              }}
-            >
-              <h3 className="text-white mb-4" style={{ fontSize: "1.8rem" }}>
-                Send a Message
-              </h3>
-
-              {status.message && (
-                <Alert
-                  variant={status.type === "success" ? "success" : "danger"}
-                  dismissible
-                  onClose={() => setStatus({ type: "", message: "" })}
-                  className="mb-4"
-                >
-                  {status.message}
-                </Alert>
-              )}
-
-              <Form onSubmit={handleSubmit}>
-                <Row>
-                  <Col md={6} className="mb-3">
-                    <Form.Label className="text-white mb-2">Name</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="name"
-                      placeholder="Your name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      style={{
-                        backgroundColor: "#2a2a2a",
-                        border: "1px solid #3a3a3a",
-                        color: "#fff",
-                        borderRadius: "8px",
-                        padding: "0.75rem",
-                      }}
-                      onFocus={(e) => {
-                        e.target.style.borderColor = "#4484ce";
-                        e.target.style.outline = "none";
-                      }}
-                      onBlur={(e) => {
-                        e.target.style.borderColor = "#3a3a3a";
-                      }}
-                    />
-                  </Col>
-                  <Col md={6} className="mb-3">
-                    <Form.Label className="text-white mb-2">Email</Form.Label>
-                    <Form.Control
-                      type="email"
-                      name="email"
-                      placeholder="your.email@example.com"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      style={{
-                        backgroundColor: "#2a2a2a",
-                        border: "1px solid #3a3a3a",
-                        color: "#fff",
-                        borderRadius: "8px",
-                        padding: "0.75rem",
-                      }}
-                      onFocus={(e) => {
-                        e.target.style.borderColor = "#4484ce";
-                        e.target.style.outline = "none";
-                      }}
-                      onBlur={(e) => {
-                        e.target.style.borderColor = "#3a3a3a";
-                      }}
-                    />
-                  </Col>
-                </Row>
-
-                <Form.Group className="mb-3">
-                  <Form.Label className="text-white mb-2">Subject</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="subject"
-                    placeholder="What's this about?"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    style={{
-                      backgroundColor: "#2a2a2a",
-                      border: "1px solid #3a3a3a",
-                      color: "#fff",
-                      borderRadius: "8px",
-                      padding: "0.75rem",
-                    }}
-                    onFocus={(e) => {
-                      e.target.style.borderColor = "#4484ce";
-                      e.target.style.outline = "none";
-                    }}
-                    onBlur={(e) => {
-                      e.target.style.borderColor = "#3a3a3a";
-                    }}
-                  />
-                </Form.Group>
-
-                <Form.Group className="mb-4">
-                  <Form.Label className="text-white mb-2">Message</Form.Label>
-                  <Form.Control
-                    as="textarea"
-                    rows={6}
-                    name="message"
-                    placeholder="Tell me about your project, opportunity, or just say hello!"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    style={{
-                      backgroundColor: "#2a2a2a",
-                      border: "1px solid #3a3a3a",
-                      color: "#fff",
-                      borderRadius: "8px",
-                      padding: "0.75rem",
-                      resize: "vertical",
-                    }}
-                    onFocus={(e) => {
-                      e.target.style.borderColor = "#4484ce";
-                      e.target.style.outline = "none";
-                    }}
-                    onBlur={(e) => {
-                      e.target.style.borderColor = "#3a3a3a";
-                    }}
-                  />
-                </Form.Group>
-
-                <Button
-                  type="submit"
-                  disabled={loading}
-                  className="w-100"
+              <Col md={7} lg={7} className="offset-lg-1">
+                <div
                   style={{
-                    backgroundColor: "#fff",
-                    color: "#000",
-                    border: "none",
-                    borderRadius: "8px",
-                    padding: "0.75rem 1.5rem",
-                    fontSize: "1.1rem",
-                    fontWeight: "500",
-                    transition: "all 0.3s",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.backgroundColor = "#f0f0f0";
-                    e.target.style.transform = "translateY(-2px)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.backgroundColor = "#fff";
-                    e.target.style.transform = "translateY(0)";
+                    backgroundColor: "#1a1a1a",
+                    borderRadius: "6px",
+                    padding: "0.85rem 1rem",
                   }}
                 >
-                  {loading ? (
-                    <>
-                      <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <i className="fas fa-paper-plane me-2"></i>
-                      Send Message
-                    </>
+                  <h3 className="text-white mb-2" style={{ fontSize: "1.05rem" }}>
+                    Send a Message
+                  </h3>
+
+                  {status.message && (
+                    <Alert
+                      variant={status.type === "success" ? "success" : "danger"}
+                      dismissible
+                      onClose={() => setStatus({ type: "", message: "" })}
+                      className="mb-2"
+                      style={{ fontSize: "0.8rem", padding: "0.35rem 0.6rem" }}
+                    >
+                      {status.message}
+                    </Alert>
                   )}
-                </Button>
-              </Form>
-            </div>
+
+                  <Form onSubmit={handleSubmit}>
+                    <Row>
+                      <Col md={6} className="mb-1">
+                        <Form.Label className="text-white mb-1" style={{ fontSize: "0.8rem" }}>Name</Form.Label>
+                        <Form.Control
+                          type="text"
+                          name="name"
+                          placeholder="Your name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          required
+                          style={{
+                            backgroundColor: "#2a2a2a",
+                            border: "1px solid #3a3a3a",
+                            color: "#fff",
+                            borderRadius: compactBorderRadius,
+                            padding: compactPadding,
+                            fontSize: "0.8rem",
+                          }}
+                          onFocus={(e) => {
+                            e.target.style.borderColor = "#4484ce";
+                            e.target.style.outline = "none";
+                          }}
+                          onBlur={(e) => {
+                            e.target.style.borderColor = "#3a3a3a";
+                          }}
+                        />
+                      </Col>
+                      <Col md={6} className="mb-1">
+                        <Form.Label className="text-white mb-1" style={{ fontSize: "0.8rem" }}>Email</Form.Label>
+                        <Form.Control
+                          type="email"
+                          name="email"
+                          placeholder="your.email@example.com"
+                          value={formData.email}
+                          onChange={handleChange}
+                          required
+                          style={{
+                            backgroundColor: "#2a2a2a",
+                            border: "1px solid #3a3a3a",
+                            color: "#fff",
+                            borderRadius: compactBorderRadius,
+                            padding: compactPadding,
+                            fontSize: "0.8rem",
+                          }}
+                          onFocus={(e) => {
+                            e.target.style.borderColor = "#4484ce";
+                            e.target.style.outline = "none";
+                          }}
+                          onBlur={(e) => {
+                            e.target.style.borderColor = "#3a3a3a";
+                          }}
+                        />
+                      </Col>
+                    </Row>
+
+                    <Form.Group className="mb-1">
+                      <Form.Label className="text-white mb-1" style={{ fontSize: "0.8rem" }}>Subject</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="subject"
+                        placeholder="What's this about?"
+                        value={formData.subject}
+                        onChange={handleChange}
+                        required
+                        style={{
+                          backgroundColor: "#2a2a2a",
+                          border: "1px solid #3a3a3a",
+                          color: "#fff",
+                          borderRadius: compactBorderRadius,
+                          padding: compactPadding,
+                          fontSize: "0.8rem",
+                        }}
+                        onFocus={(e) => {
+                          e.target.style.borderColor = "#4484ce";
+                          e.target.style.outline = "none";
+                        }}
+                        onBlur={(e) => {
+                          e.target.style.borderColor = "#3a3a3a";
+                        }}
+                      />
+                    </Form.Group>
+
+                    <Form.Group className="mb-2">
+                      <Form.Label className="text-white mb-1" style={{ fontSize: "0.8rem" }}>Message</Form.Label>
+                      <Form.Control
+                        as="textarea"
+                        rows={3}
+                        name="message"
+                        placeholder="Tell me about your project, opportunity, or just say hello!"
+                        value={formData.message}
+                        onChange={handleChange}
+                        required
+                        style={{
+                          backgroundColor: "#2a2a2a",
+                          border: "1px solid #3a3a3a",
+                          color: "#fff",
+                          borderRadius: compactBorderRadius,
+                          padding: compactPadding,
+                          resize: "vertical",
+                          fontSize: "0.8rem",
+                        }}
+                        onFocus={(e) => {
+                          e.target.style.borderColor = "#4484ce";
+                          e.target.style.outline = "none";
+                        }}
+                        onBlur={(e) => {
+                          e.target.style.borderColor = "#3a3a3a";
+                        }}
+                      />
+                    </Form.Group>
+
+                    <Button
+                      type="submit"
+                      disabled={loading}
+                      className="w-100"
+                      style={{
+                        backgroundColor: "#fff",
+                        color: "#000",
+                        border: "none",
+                        borderRadius: compactBorderRadius,
+                        padding: "0.4rem 0.9rem",
+                        fontSize: "0.75rem",
+                        fontWeight: "500",
+                        transition: "all 0.3s",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.target.style.backgroundColor = "#f0f0f0";
+                        e.target.style.transform = "translateY(-2px)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.target.style.backgroundColor = "#fff";
+                        e.target.style.transform = "translateY(0)";
+                      }}
+                    >
+                      {loading ? (
+                        <>
+                          <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          <i className="fas fa-paper-plane me-2"></i>
+                          Send Message
+                        </>
+                      )}
+                    </Button>
+                  </Form>
+                </div>
+              </Col>
+            </Row>
           </section>
         </Col>
       </Row>

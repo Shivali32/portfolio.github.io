@@ -93,9 +93,9 @@ const AboutMe = ({ heading, message1, message2, link, imgSize, resume }) => {
               {heading}
             </h2>
             <div>
-                <p className="msg lead text-light mb-0">{message1}</p>
-                <br></br>
-                {/* <p className="msg lead text-light mb-0">{message2}</p> */}
+                {/* <p className="msg lead text-light mb-0">{message1}</p>
+                <br></br> */}
+                <p className="msg text-light mb-0">{message2}</p>
             </div>                            
             {resume && (
               <p className="lead text-center">  
